@@ -49,16 +49,19 @@ using (var scope = app.Services.CreateScope())
         const uint numberOfUsers = 6;
         var randomData = ChatHistoryGenerator.GenerateHistory(
             yearBack, numberOfUsers);
-        var repository = services.GetRequiredService<IRepositorySql>();
-        await repository.AddUsersAsync(randomData.users);
+        
+        var userRepo = services.GetRequiredService<IRepositoryUser>();
+        await userRepo.AddUsersAsync(randomData.users);
         Console.WriteLine("Filling Database with random users completed");
-        await repository.AddEnterRoomsAsync(randomData.enters);
+        
+        var chatEventRepo = services.GetRequiredService<IRepositoryChatEvent>();
+        await chatEventRepo.AddEnterRoomsAsync(randomData.enters);
         Console.WriteLine("Filling Database with random chat enters completed");
-        await repository.AddLeaveRoomsAsync(randomData.leaves);
+        await chatEventRepo.AddLeaveRoomsAsync(randomData.leaves);
         Console.WriteLine("Filling Database with random chat leaves completed");
-        await repository.AddCommentsAsync(randomData.comments);
+        await chatEventRepo.AddCommentsAsync(randomData.comments);
         Console.WriteLine("Filling Database with random chat comments completed");
-        await repository.AddHighFivesAsync(randomData.highFives);
+        await chatEventRepo.AddHighFivesAsync(randomData.highFives);
         Console.WriteLine("Filling Database with random high fives completed");
         Console.WriteLine("=== Filling Database with random data completed ===");
     }
