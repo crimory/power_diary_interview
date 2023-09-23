@@ -45,10 +45,10 @@ using (var scope = app.Services.CreateScope())
     if (migrationHappened)
     {
         Console.WriteLine("=== Filling Database with random data started ===");
-        var yearBack = new TimeSpan(365, 0, 0, 0);
+        var howFarBack = new TimeSpan(365, 0, 0, 0);
         const uint numberOfUsers = 6;
         var randomData = ChatHistoryGenerator.GenerateHistory(
-            yearBack, numberOfUsers);
+            howFarBack, numberOfUsers);
         
         var userRepo = services.GetRequiredService<IRepositoryUser>();
         await userRepo.AddUsersAsync(randomData.users);
