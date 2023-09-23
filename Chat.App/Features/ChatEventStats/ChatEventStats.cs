@@ -36,10 +36,10 @@ public class ChatEventStats : IChatEventStats
         var dbStats = granularity switch
         {
             ChatEventGranularity.EverySecond => await _repositoryStats.GetEventsEverySecond(page),
-            ChatEventGranularity.EveryMinute => await _repositoryStats.GetEventsEverySecond(page),
-            ChatEventGranularity.EveryHour => await _repositoryStats.GetEventsEverySecond(page),
-            ChatEventGranularity.EveryDay => await _repositoryStats.GetEventsEverySecond(page),
-            ChatEventGranularity.EveryMonth => await _repositoryStats.GetEventsEverySecond(page),
+            ChatEventGranularity.EveryMinute => await _repositoryStats.GetEventsEveryMinute(page),
+            ChatEventGranularity.EveryHour => await _repositoryStats.GetEventsEveryHour(page),
+            ChatEventGranularity.EveryDay => await _repositoryStats.GetEventsEveryDay(page),
+            ChatEventGranularity.EveryMonth => await _repositoryStats.GetEventsEveryMonth(page),
             _ => throw new ArgumentOutOfRangeException(nameof(granularity), granularity, null)
         };
         return _mapper.Map(dbStats);
