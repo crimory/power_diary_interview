@@ -6,6 +6,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Domain.Tests", "Chat.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.App", "Chat.App\Chat.App.csproj", "{17280C2A-8C5F-4B6D-9738-7214170513E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{3AE45A0D-12D7-415D-B228-2A65AFA89887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Blazor.Server", "Blazor\Chat.Blazor\Server\Chat.Blazor.Server.csproj", "{4CB40B4A-B51C-4C49-BE1C-B38F736B2420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Blazor.Client", "Blazor\Chat.Blazor\Client\Chat.Blazor.Client.csproj", "{62C8770D-9F18-4316-A155-C54351CC728D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Blazor.Shared", "Blazor\Chat.Blazor\Shared\Chat.Blazor.Shared.csproj", "{E101E466-3304-45AE-B8BD-5F13B6D3EE90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +32,22 @@ Global
 		{17280C2A-8C5F-4B6D-9738-7214170513E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17280C2A-8C5F-4B6D-9738-7214170513E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17280C2A-8C5F-4B6D-9738-7214170513E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CB40B4A-B51C-4C49-BE1C-B38F736B2420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB40B4A-B51C-4C49-BE1C-B38F736B2420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB40B4A-B51C-4C49-BE1C-B38F736B2420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB40B4A-B51C-4C49-BE1C-B38F736B2420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C8770D-9F18-4316-A155-C54351CC728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C8770D-9F18-4316-A155-C54351CC728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C8770D-9F18-4316-A155-C54351CC728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C8770D-9F18-4316-A155-C54351CC728D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E101E466-3304-45AE-B8BD-5F13B6D3EE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E101E466-3304-45AE-B8BD-5F13B6D3EE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E101E466-3304-45AE-B8BD-5F13B6D3EE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E101E466-3304-45AE-B8BD-5F13B6D3EE90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4CB40B4A-B51C-4C49-BE1C-B38F736B2420} = {3AE45A0D-12D7-415D-B228-2A65AFA89887}
+		{62C8770D-9F18-4316-A155-C54351CC728D} = {3AE45A0D-12D7-415D-B228-2A65AFA89887}
+		{E101E466-3304-45AE-B8BD-5F13B6D3EE90} = {3AE45A0D-12D7-415D-B228-2A65AFA89887}
 	EndGlobalSection
 EndGlobal
