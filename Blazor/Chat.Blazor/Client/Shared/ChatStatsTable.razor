@@ -1,0 +1,81 @@
+@using Chat.Blazor.Shared
+@inject HttpClient Http
+
+@if (_chatStats == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <div>
+        <button disabled="@IsFirstPage" @onclick="GoToPreviousPage">Newer</button>
+        <span>Page @CurrentPage</span>
+        <button @onclick="GoToNextPage">Older</button>
+        <button disabled="@IsFirstPage" @onclick="GoToFirstPage">Newest stats</button>
+    </div>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Time Frame</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var stat in _chatStats)
+        {
+            <tr>
+                <td>@stat.TimeFrame</td>
+                <td>@stat.Description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public required string Granularity { get; set; }
+    
+    private int CurrentPage { get; set; }
+    private bool IsFirstPage => CurrentPage == 0;
+    
+    private ChatStatFrontend[]? _chatStats;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await GetChatStats();
+    }
+
+    private async Task GetChatStats()
+    {
+        _chatStats = null;
+        _chatStats = await Http.GetFromJsonAsync<ChatStatFrontend[]>($"ChatEventStats/{Granularity}/{CurrentPage}");
+    }
+    
+    private async Task GoToNextPage()
+    {
+        CurrentPage++;
+        await GetChatStats();
+    }
+
+    private async Task GoToPreviousPage()
+    {
+        if (CurrentPage > 0)
+        {
+            CurrentPage--;
+            await GetChatStats();
+        }
+    }
+    
+    private async Task GoToFirstPage()
+    {
+        if (CurrentPage > 0)
+        {
+            CurrentPage = 0;
+            await GetChatStats();
+        }
+    }
+}
